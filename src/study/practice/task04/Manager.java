@@ -1,4 +1,11 @@
 package study.practice.task04;
 
-public class Manager {
+import java.util.List;
+import java.util.Map;
+
+public class Manager extends AbstractHuman {
+
+
+
+
 }

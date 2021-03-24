@@ -1,4 +1,11 @@
 package study.practice.task04;
 
-public class Librarian {
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Librarian extends AbstractHuman {
+
+
+
 }
