@@ -8,8 +8,24 @@ public class Book {
     private String bookName;
     private int counter;
     private BookStore store;
-    private Map<Long, Map<LocalDate, LocalDate>> timeList;
+    private TreeMap<Long, DateMap> timeList;
     private LinkedList<Long> infoWhoTook;
+
+    static class DateMap {
+        private TreeMap<LocalDate, LocalDate> dateMap;
+
+        public DateMap() {
+            this.dateMap = new TreeMap<>();
+        }
+
+        public StringBuilder getDateMap() {
+            return new StringBuilder(dateMap.lastEntry().toString());
+        }
+
+        public void setDateMap(LocalDate take, LocalDate back) {
+            dateMap.put(take, back);
+        }
+    }
 
     public Book(long id,
                 String bookName,
@@ -20,20 +36,17 @@ public class Book {
         this.store = store;
         this.counter = counter;
         this.infoWhoTook = new LinkedList<>();
-        this.timeList = new Hashtable<>();
+        this.timeList = new TreeMap<>();
     }
 
     public void setTimeList(Long id, LocalDate take, LocalDate back) {
-        Map<LocalDate, LocalDate> curMap = new TreeMap<>();
-        curMap.put(take, back);
-        timeList.put(id, curMap);
+        DateMap dateMap = new DateMap();
+        dateMap.setDateMap(take, back);
+        timeList.put(id, dateMap);
     }
 
     public StringBuilder getTimeList() {
-        for (Map.Entry<Long, Map<LocalDate, LocalDate>> entry: timeList.values()) {
-            for (Map.Entry<LocalDate, LocalDate> entry1: entry.values())
-        }
-        return new StringBuilder(timeList);
+        return new StringBuilder(timeList.lastEntry().toString());
     }
 
 
