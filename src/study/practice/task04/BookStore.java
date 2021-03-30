@@ -1,20 +1,42 @@
 package study.practice.task04;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class BookStore {
-    private static BookStore instance;
-    private Map<String, List<Book>> store;
+    private long shelf;
+    private String genre;
+    private Map<Long, Book> store;
 
-    private BookStore(Map<String, List<Book>> store) {
-        this.store = store;
+    public BookStore() {
+        this.store = new HashMap<>();
     }
 
-    public static BookStore getInstance(Map<String, List<Book>> store) {
-        if (instance == null) {
-            instance = new BookStore(store);
+    public void addNewBook(Book book) {
+        store.put(book.getId(), book);
+    }
+
+    public boolean removeBook(Book book) {
+        if (!(book == null)) {
+            store.remove(book.getId());
+            return true;
         }
-        return instance;
+        return false;
+    }
+
+    public void showBookStore() {
+        for (Map.Entry<Long, Book> s: store.entrySet()) {
+            System.out.println(s.getKey() + " " + s.getValue());
+        }
+    }
+
+    public Book getBook(Long id) {
+        return store.get(id);
+    }
+
+    public void size() {
+        System.out.println(store.size());
     }
 }
