@@ -6,11 +6,12 @@ import java.util.Map;
 public class Library {
     private Manager manager;
     private Librarian librarian;
-    private Map<String, Book> bookStore;
+    private Visitor visitor;
+    private BookStore bookStore;
 
     public Library(Manager manager,
                    Librarian librarian,
-                   Map<String, Book> bookStore) {
+                   BookStore bookStore) {
         this.manager = manager; 
         this.librarian = librarian;
         this.bookStore = bookStore;
@@ -19,24 +20,25 @@ public class Library {
     public Manager getManager() {
         return manager;
     }
-
     public void setManager(Manager manager) {
         this.manager = manager;
     }
-
     public Librarian getLibrarian() {
         return librarian;
     }
-
     public void setLibrarian(Librarian librarian) {
         this.librarian = librarian;
     }
-
-    public Map<String, Book> getBookStore() {
+    public Visitor getVisitor() {
+        return visitor;
+    }
+    public void setVisitor(Visitor visitor) {
+        this.visitor = visitor;
+    }
+    public BookStore getBookStore() {
         return bookStore;
     }
-
-    public void setBookStore(Map<String, Book> bookStore) {
+    public void setBookStore(BookStore bookStore) {
         this.bookStore = bookStore;
     }
 }

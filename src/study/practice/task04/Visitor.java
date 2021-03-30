@@ -1,36 +1,46 @@
 package study.practice.task04;
 
-import org.w3c.dom.ls.LSOutput;
+import java.util.List;
 
-public class Visitor extends AbstractHuman{
+public class Visitor extends AbstractHuman {
+
     private Long id;
     private String name;
+    private Library library;
+    private List<Book> books;
+
+    public Visitor(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+//    public Long getId() {
+//        return id;
+//    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//    public String getName() {
+//        return name;
+//    }
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void takeBook(Book book) { // one or more
+        books.add(book);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void takeBook() { // one or more
-        System.out.println("I can take the book");
-    }
-
-    public void returnBook() {
-        System.out.println("I returned the book");
+    public void returnBook(Book book) {
+        books.remove(book);
+//        Library.takeBook(book); // library must know about this book
     }
 
     public void showBooks() {
-        System.out.println("I can see list of books");
+//        Library.showBooks(); // library can show list of books
     }
 }

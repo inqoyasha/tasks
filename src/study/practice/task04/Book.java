@@ -4,10 +4,10 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Book {
-    private long id;
+    private Long bookId;
     private String bookName;
-    private int counter;
-    private BookStore store;
+    private Integer counter;
+    private BookStore bookStore;
     private TreeMap<Long, DateMap> timeList;
     private LinkedList<Long> infoWhoTook;
 
@@ -27,17 +27,58 @@ public class Book {
         }
     }
 
-    public Book(long id,
+    public Book(Long bookId,
                 String bookName,
-                BookStore store,
-                int counter) {
-        this.id = id;
+                BookStore bookStore,
+                Integer counter) {
+        this.bookId = bookId;
         this.bookName = bookName;
-        this.store = store;
+        this.bookStore = bookStore;
         this.counter = counter;
         this.infoWhoTook = new LinkedList<>();
         this.timeList = new TreeMap<>();
     }
+
+    public long getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
+    public String getBookName() {
+        return bookName;
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(Integer counter) {
+        this.counter = counter;
+    }
+
+    public Long getShelf() {
+        return bookStore.getShelf();
+    }
+
+    public void setShelf(Long shelf) {
+        bookStore.setShelf(shelf);
+    }
+
+    public String getGenre() {
+        return bookStore.getGenre();
+    }
+
+    public void setGenre(String genre) {
+        bookStore.setGenre(genre);
+    }
+
 
     public void setTimeList(Long id, LocalDate take, LocalDate back) {
         DateMap dateMap = new DateMap();
@@ -48,7 +89,6 @@ public class Book {
     public StringBuilder getTimeList() {
         return new StringBuilder(timeList.lastEntry().toString());
     }
-
 
 
     public Long getInfoWhoTook() {
