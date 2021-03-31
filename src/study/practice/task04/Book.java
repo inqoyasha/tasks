@@ -7,7 +7,8 @@ public class Book {
     private Long bookId;
     private String bookName;
     private Integer counter;
-    private BookStore bookStore;
+    private Long shelf;
+    private String genre;
     private TreeMap<Long, DateMap> timeList;
     private LinkedList<Long> infoWhoTook;
 
@@ -25,16 +26,25 @@ public class Book {
         public void setDateMap(LocalDate take, LocalDate back) {
             dateMap.put(take, back);
         }
+
+        @Override
+        public String toString() {
+            return "DateMap{" +
+                    "dateMap=" + dateMap +
+                    '}';
+        }
     }
 
     public Book(Long bookId,
                 String bookName,
-                BookStore bookStore,
+                Long shelf,
+                String genre,
                 Integer counter) {
         this.bookId = bookId;
         this.bookName = bookName;
-        this.bookStore = bookStore;
         this.counter = counter;
+        this.genre = genre;
+        this.shelf = shelf;
         this.infoWhoTook = new LinkedList<>();
         this.timeList = new TreeMap<>();
     }
@@ -64,21 +74,20 @@ public class Book {
     }
 
     public Long getShelf() {
-        return bookStore.getShelf();
+        return shelf;
     }
 
     public void setShelf(Long shelf) {
-        bookStore.setShelf(shelf);
+        this.shelf = shelf;
     }
 
     public String getGenre() {
-        return bookStore.getGenre();
+        return genre;
     }
 
     public void setGenre(String genre) {
-        bookStore.setGenre(genre);
+        this.genre = genre;
     }
-
 
     public void setTimeList(Long id, LocalDate take, LocalDate back) {
         DateMap dateMap = new DateMap();
@@ -97,5 +106,18 @@ public class Book {
 
     public void setInfoWhoTook(Long id) {
         infoWhoTook.push(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", bookName='" + bookName + '\'' +
+                ", counter=" + counter +
+                ", shelf=" + shelf +
+                ", genre='" + genre + '\'' +
+                ", timeList=" + timeList +
+                ", infoWhoTook=" + infoWhoTook +
+                '}';
     }
 }

@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Librarian extends AbstractHuman {
-    
+
     private BookStore bookStore;
 
-    public Librarian(Library library) {
-       this.bookStore = library.getBookStore();
+    public Librarian(BookStore bookStore) {
+       this.bookStore = bookStore;
     }
 
     public void giveBook(Visitor visitor, Long id) {
